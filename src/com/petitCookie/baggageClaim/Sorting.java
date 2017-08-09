@@ -4,20 +4,21 @@ import java.util.*;
 
 public class Sorting {
 
-    List<String> fullList = new ArrayList<>();
+    List<String> fullList;
 
 
-    public Sorting(){
+    public Sorting() {
         fullList = FileReader.readFile("data/random.txt");
     }
 
 
-    public boolean playSorting() {
+    public void playSorting() {
         List<String> words = createWordList();
-        List<Integer> result = new ArrayList<>(createResultList(words));
-        String[] userAnswer = getUserAnswer(words);
-        boolean success = checkUserAnswer(userAnswer, result);
-        return success;
+        List<Integer> result = createResultList(words);
+        String[] userAnswer;
+        do {
+            userAnswer = getUserAnswer(words);
+        } while (!checkUserAnswer(userAnswer, result));
     }
 
     private List createWordList() {
@@ -50,21 +51,25 @@ public class Sorting {
         for (Object word : wordsToSort) {
             System.out.println(wordsToSort.indexOf(word) + " " + word);
         }
-        System.out.print("Enter numbers in the right order (separated by space): ");
-        String answer = userAnswer.nextLine();
+        String answer, temp;
+        do {
+            System.out.print("Enter numbers in the right order (separated by space): ");
+            answer = userAnswer.nextLine();
+            temp = answer.replaceAll(" ", "");
+        } while (!(temp.length() == 6 && new Scanner(temp).hasNextInt()));
         String[] numbers = answer.split(" ");
-        return  numbers;
+        return numbers;
     }
 
 
     private boolean checkUserAnswer(String[] answers, List correctAnswers) {
-       for (int i = 0; i < answers.length; i++) {
-           Integer number = new Integer(answers[i]);
-           if (!number.equals(correctAnswers.get(i))) {
-             return false;
-           }
-       }
-       return true;
+        for (int i = 0; i < answers.length; i++) {
+            Integer number = new Integer(answers[i]);
+            if (!number.equals(correctAnswers.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
 

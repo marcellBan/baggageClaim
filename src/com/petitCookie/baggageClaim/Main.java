@@ -39,6 +39,8 @@ public class Main {
             stillPlaying = game.getAnswer();
             numberOfCountriesToMemorize++;
         }
+        System.out.println("You failed!\nPress Enter to return to the main menu.");
+        new Scanner(System.in).nextLine();
     }
 
     private static int getSelection() {
@@ -50,16 +52,20 @@ public class Main {
         List<String> help = FileReader.readFile("data/help.txt");
         List<String> credits = FileReader.readFile("data/credits.txt");
         clearScreen();
+        System.out.print(String.format("%c[1m", 0x1B));  // bold
         System.out.println("Help");
+        System.out.print(String.format("%c[0m", 0x1B));  // reset
         for (String line : help) {
             System.out.println(line);
         }
+        System.out.print(String.format("%c[1m", 0x1B));  // bold
         System.out.println("\nCredits");
+        System.out.print(String.format("%c[0m", 0x1B));  // reset
         for (String line : credits) {
             System.out.println(line);
         }
+        System.out.println("\nPress Enter to return to the main menu.");
         new Scanner(System.in).nextLine();
-        // TODO: 2017.08.09.
     }
 
     private static void printMenu() {
