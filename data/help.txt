@@ -1,0 +1,4 @@
+First you will be presented with country names. you have to memorize.
+Then you have to solve one or more sorting problems.
+Finally you have to select the countries you memorized earlier.
+Then you do it all over again until you mess up the memorization.
