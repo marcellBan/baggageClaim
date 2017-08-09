@@ -29,15 +29,15 @@ public class MemoryGame {
     public boolean getAnswer() {
         System.out.println("Select the countries you memorized!");
         int fullSize = selected.size() + 3;
-        List<String> tempArray = new ArrayList<>(fullSize);
+        List<String> extendedSelection = new ArrayList<>(fullSize);
 
         for (int i = 0; i < fullSize; i++) {
-            tempArray.add(allData.get(i));
+            extendedSelection.add(allData.get(i));
         }
-        Collections.shuffle(tempArray);
+        Collections.shuffle(extendedSelection);
 
         for (int i = 0; i < fullSize; i++) {
-            System.out.println(i + ". " + tempArray.get(i));
+            System.out.println(i + ". " + extendedSelection.get(i));
         }
         System.out.println("Select the countries shown before by entering the numbers separated by commas!");
 
@@ -47,9 +47,9 @@ public class MemoryGame {
         if (indexes.length != selected.size()) {
             return false;
         }
-        for (int i = 0; i < indexes.length; i++) {
-            int index = Integer.parseInt(indexes[i]);
-            if (!selected.contains(tempArray.get(index))) {
+        for (String i : indexes) {
+            int index = Integer.parseInt(i);
+            if (!selected.contains(extendedSelection.get(index))) {
                 return false;
             }
         }
