@@ -17,12 +17,12 @@ public class MemoryGame {
     public void showNEntries(int n) {
         selected.clear();
         Collections.shuffle(allData);
-        System.out.println("Memorize these countries!");
+        System.out.println("Memorize these countries!\n");
         for (int i = 0; i < n; i++) {
             selected.add(allData.get(i));
-            System.out.println(selected.get(i));
+            System.out.println("  " + selected.get(i));
         }
-        System.out.println("Press Enter when you are ready!");
+        System.out.println("\nPress Enter when you are ready!");
         new Scanner(System.in).nextLine();
     }
 
