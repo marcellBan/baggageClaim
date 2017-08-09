@@ -51,8 +51,12 @@ public class Sorting {
         for (Object word : wordsToSort) {
             System.out.println(wordsToSort.indexOf(word) + " " + word);
         }
-        System.out.print("Enter numbers in the right order (separated by space): ");
-        String answer = userAnswer.nextLine();
+        String answer, temp;
+        do {
+            System.out.print("Enter numbers in the right order (separated by space): ");
+            answer = userAnswer.nextLine();
+            temp = answer.replaceAll(" ", "");
+        } while (!(temp.length() == 6 && new Scanner(temp).hasNextInt()));
         String[] numbers = answer.split(" ");
         return  numbers;
     }
