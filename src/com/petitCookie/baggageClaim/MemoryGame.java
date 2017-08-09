@@ -39,10 +39,19 @@ public class MemoryGame {
         for (int i = 0; i < fullSize; i++) {
             System.out.println(i + ". " + extendedSelection.get(i));
         }
-        System.out.println("Select the countries shown before by entering the numbers separated by spaces!");
 
-        String userInput = new Scanner(System.in).nextLine();
-        String[] indexes = userInput.split(" ");
+        String userInput;
+        String[] indexes;
+        boolean flag;
+        do {
+            flag = false;
+            System.out.println("Select the countries shown before by entering the numbers separated by spaces!");
+            userInput = new Scanner(System.in).nextLine();
+            indexes = userInput.split(" ");
+            for(String i : indexes){
+                flag = flag || !(new Scanner(i).hasNextInt());
+            }
+        }while(flag);
 
         if (indexes.length != selected.size()) {
             return false;
