@@ -12,12 +12,13 @@ public class Sorting {
     }
 
 
-    public boolean playSorting() {
+    public void playSorting() {
         List<String> words = createWordList();
         List<Integer> result = new ArrayList<>(createResultList(words));
-        String[] userAnswer = getUserAnswer(words);
-        boolean success = checkUserAnswer(userAnswer, result);
-        return success;
+        String[] userAnswer;
+        do {
+            userAnswer = getUserAnswer(words);
+        }while( !checkUserAnswer(userAnswer, result));
     }
 
     private List createWordList() {
