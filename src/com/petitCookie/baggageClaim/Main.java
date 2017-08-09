@@ -45,7 +45,13 @@ public class Main {
 
     private static int getSelection() {
         System.out.print("Please select an option: ");
-        return new Scanner(System.in).nextInt();
+        Scanner input = new Scanner(System.in);
+        while(!input.hasNextInt()){
+            input.next();
+            System.out.print("Please select an option: ");
+        }
+        return input.nextInt();
+
     }
 
     private static void printHelpCredits() {
