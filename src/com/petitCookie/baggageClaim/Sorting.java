@@ -8,7 +8,7 @@ public class Sorting {
 
 
     public Sorting(){
-        fullList = FileReader.readFile("random.txt");
+        fullList = FileReader.readFile("data/random.txt");
     }
 
 
